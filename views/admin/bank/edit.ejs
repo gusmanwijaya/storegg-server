@@ -11,8 +11,8 @@
       >
         <img
           class="animation__shake"
-          src="/adminlte/dist/img/AdminLTELogo.png"
-          alt="AdminLTELogo"
+          src="/images/logo.png"
+          alt="Logo"
           height="60"
           width="60"
         />
@@ -55,7 +55,7 @@
                 <div class="card card-primary">
                   <div class="card-header">
                     <h3 class="card-title">
-                      Form Ubah Bank <%= bank.nameBank %> - <%= bank.name %>
+                      Form Ubah Bank <%= bank.bankName %> - <%= bank.name %>
                     </h3>
                   </div>
                   <!-- /.card-header -->
@@ -79,14 +79,14 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="nameBank">Nama Bank</label>
+                        <label for="bankName">Nama Bank</label>
                         <input
                           type="text"
                           class="form-control"
-                          id="nameBank"
-                          name="nameBank"
+                          id="bankName"
+                          name="bankName"
                           placeholder="Masukkan nama bank"
-                          value="<%= bank.nameBank %>"
+                          value="<%= bank.bankName %>"
                           required
                         />
                       </div>

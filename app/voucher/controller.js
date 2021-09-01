@@ -9,6 +9,8 @@ const config = require("../../config");
 module.exports = {
   index: async (req, res) => {
     try {
+      const originalUrl = req.originalUrl.split("/");
+
       const alertStatus = req.flash("alertStatus");
       const alertMessage = req.flash("alertMessage");
 
@@ -24,6 +26,9 @@ module.exports = {
       res.render("admin/voucher/view_voucher", {
         voucher,
         alert,
+        name: req.session.user.name,
+        title: "Voucher - STORE GG",
+        url: originalUrl[1],
       });
     } catch (error) {
       req.flash("alertStatus", "danger");
@@ -33,12 +38,17 @@ module.exports = {
   },
   viewCreate: async (req, res) => {
     try {
+      const originalUrl = req.originalUrl.split("/");
+
       const category = await Category.find();
       const nominal = await Nominal.find();
 
       res.render("admin/voucher/create", {
         category,
         nominal,
+        name: req.session.user.name,
+        title: "Tambah Voucher - STORE GG",
+        url: originalUrl[1],
       });
     } catch (error) {
       req.flash("alertStatus", "danger");
@@ -106,6 +116,8 @@ module.exports = {
   },
   viewEdit: async (req, res) => {
     try {
+      const originalUrl = req.originalUrl.split("/");
+
       const { id } = req.params;
       const category = await Category.find();
       const nominal = await Nominal.find();
@@ -113,7 +125,14 @@ module.exports = {
         .populate("category")
         .populate("nominals");
 
-      res.render("admin/voucher/edit", { category, nominal, voucher });
+      res.render("admin/voucher/edit", {
+        category,
+        nominal,
+        voucher,
+        name: req.session.user.name,
+        title: "Ubah Voucher - STORE GG",
+        url: originalUrl[1],
+      });
     } catch (error) {
       req.flash("alertStatus", "danger");
       req.flash("alertMessage", `${err.message}`);

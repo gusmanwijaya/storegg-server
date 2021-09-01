@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <!-- Header -->
-  <% include ./partials/header.ejs %>
+  <% include ../../partials/header.ejs %>
 
   <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -19,10 +19,10 @@
       </div>
 
       <!-- Navbar -->
-      <% include ./partials/navbar.ejs %>
+      <% include ../../partials/navbar.ejs %>
 
       <!-- Sidebar -->
-      <% include ./partials/sidebar.ejs %>
+      <% include ../../partials/sidebar.ejs %>
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -57,13 +57,16 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                   <div class="inner">
-                    <h3>150</h3>
+                    <h3><%= count.transaction %></h3>
 
-                    <p>New Orders</p>
+                    <p>Transaksi</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-bag"></i>
                   </div>
+                  <a href="/transaction" class="small-box-footer"
+                    >Lihat <i class="fas fa-arrow-circle-right"></i
+                  ></a>
                 </div>
               </div>
               <!-- ./col -->
@@ -71,13 +74,16 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                   <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+                    <h3><%= count.voucher %></h3>
 
-                    <p>Bounce Rate</p>
+                    <p>Voucher</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
+                  <a href="/voucher" class="small-box-footer"
+                    >Lihat <i class="fas fa-arrow-circle-right"></i
+                  ></a>
                 </div>
               </div>
               <!-- ./col -->
@@ -85,13 +91,16 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                   <div class="inner">
-                    <h3>44</h3>
+                    <h3><%= count.player %></h3>
 
-                    <p>User Registrations</p>
+                    <p>Pengguna</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-person-add"></i>
                   </div>
+                  <a href="#" class="small-box-footer"
+                    >Lihat <i class="fas fa-arrow-circle-right"></i
+                  ></a>
                 </div>
               </div>
               <!-- ./col -->
@@ -99,13 +108,16 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                   <div class="inner">
-                    <h3>65</h3>
+                    <h3><%= count.category %></h3>
 
-                    <p>Unique Visitors</p>
+                    <p>Kategori</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                   </div>
+                  <a href="/category" class="small-box-footer"
+                    >Lihat <i class="fas fa-arrow-circle-right"></i
+                  ></a>
                 </div>
               </div>
               <!-- ./col -->
@@ -118,10 +130,10 @@
       </div>
 
       <!-- Footer -->
-      <% include ./partials/footer.ejs %>
+      <% include ../../partials/footer.ejs %>
 
       <!-- Javascript -->
-      <% include ./partials/js.ejs %>
+      <% include ../../partials/js.ejs %>
     </div>
     <!-- ./wrapper -->
   </body>

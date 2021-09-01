@@ -3,6 +3,8 @@ const Nominal = require("./model");
 module.exports = {
   index: async (req, res) => {
     try {
+      const originalUrl = req.originalUrl.split("/");
+
       const alertStatus = req.flash("alertStatus");
       const alertMessage = req.flash("alertMessage");
 
@@ -16,6 +18,9 @@ module.exports = {
       res.render("admin/nominal/view_nominal", {
         nominal,
         alert,
+        name: req.session.user.name,
+        title: "Nominal - STORE GG",
+        url: originalUrl[1],
       });
     } catch (error) {
       req.flash("alertStatus", "danger");
@@ -25,7 +30,13 @@ module.exports = {
   },
   viewCreate: async (req, res) => {
     try {
-      res.render("admin/nominal/create");
+      const originalUrl = req.originalUrl.split("/");
+
+      res.render("admin/nominal/create", {
+        name: req.session.user.name,
+        title: "Tambah Nominal - STORE GG",
+        url: originalUrl[1],
+      });
     } catch (error) {
       req.flash("alertStatus", "danger");
       req.flash("alertMessage", `${error.message}`);
@@ -50,13 +61,20 @@ module.exports = {
   },
   viewEdit: async (req, res) => {
     try {
+      const originalUrl = req.originalUrl.split("/");
+
       const { id } = req.params;
 
       const nominal = await Nominal.findOne({
         _id: id,
       });
 
-      res.render("admin/nominal/edit", { nominal });
+      res.render("admin/nominal/edit", {
+        nominal,
+        name: req.session.user.name,
+        title: "Ubah Nominal - STORE GG",
+        url: originalUrl[1],
+      });
     } catch (error) {
       req.flash("alertStatus", "danger");
       req.flash("alertMessage", `${error.message}`);

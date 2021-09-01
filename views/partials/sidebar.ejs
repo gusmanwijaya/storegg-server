@@ -1,14 +1,14 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="index3.html" class="brand-link">
+  <a href="/dashboard" class="brand-link">
     <img
-      src="/adminlte/dist/img/AdminLTELogo.png"
-      alt="AdminLTE Logo"
+      src="/images/logo.png"
+      alt="Logo"
       class="brand-image img-circle elevation-3"
       style="opacity: 0.8"
     />
-    <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <span class="brand-text font-weight-light">STORE GG</span>
   </a>
 
   <!-- Sidebar -->
@@ -24,30 +24,30 @@
         <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
         <li class="nav-item">
-          <a href="/" class="nav-link">
+          <a href="/dashboard" class="nav-link <%= url === "dashboard" ? "active" : "" %>">
             <i class="nav-icon fas fa-home"></i>
-            <p>Beranda</p>
+            <p>Dashboard</p>
           </a>
         </li>
 
         <li class="nav-header">Master</li>
 
         <li class="nav-item">
-          <a href="/category" class="nav-link">
+          <a href="/category" class="nav-link <%= url === "category" ? "active" : "" %>">
             <i class="nav-icon far fa-calendar-alt"></i>
             <p>Kategori</p>
           </a>
         </li>
 
         <li class="nav-item">
-          <a href="/nominal" class="nav-link">
+          <a href="/nominal" class="nav-link <%= url === "nominal" ? "active" : "" %>">
             <i class="nav-icon fas fa-tasks"></i>
             <p>Nominal</p>
           </a>
         </li>
 
         <li class="nav-item">
-          <a href="/voucher" class="nav-link">
+          <a href="/voucher" class="nav-link <%= url === "voucher" ? "active" : "" %>">
             <i class="nav-icon far fa-image"></i>
             <p>Voucher</p>
           </a>
@@ -56,14 +56,14 @@
         <li class="nav-header">Metode Pembayaran</li>
 
         <li class="nav-item">
-          <a href="/bank" class="nav-link">
+          <a href="/bank" class="nav-link <%= url === "bank" ? "active" : "" %>">
             <i class="nav-icon fas fa-money-check"></i>
             <p>Bank</p>
           </a>
         </li>
 
         <li class="nav-item">
-          <a href="/payment" class="nav-link">
+          <a href="/payment" class="nav-link <%= url === "payment" ? "active" : "" %>">
             <i class="nav-icon fas fa-money-check-alt"></i>
             <p>Jenis Pembayaran</p>
           </a>
@@ -72,7 +72,7 @@
         <li class="nav-header">Transaksi</li>
 
         <li class="nav-item">
-          <a href="/transaction" class="nav-link">
+          <a href="/transaction" class="nav-link <%= url === "transaction" ? "active" : "" %>">
             <i class="nav-icon fas fa-shopping-cart"></i>
             <p>Transaksi</p>
           </a>

@@ -4,6 +4,8 @@ const Bank = require("../bank/model");
 module.exports = {
   index: async (req, res) => {
     try {
+      const originalUrl = req.originalUrl.split("/");
+
       const payment = await Payment.find().populate("banks");
       const alertStatus = req.flash("alertStatus");
       const alertMessage = req.flash("alertMessage");
@@ -13,7 +15,13 @@ module.exports = {
         message: alertMessage,
       };
 
-      res.render("admin/payment/view_payment", { payment, alert });
+      res.render("admin/payment/view_payment", {
+        payment,
+        alert,
+        name: req.session.user.name,
+        title: "Pembayaran - STORE GG",
+        url: originalUrl[1],
+      });
     } catch (error) {
       req.flash("alertStatus", "danger");
       req.flash("alertMessage", `${error.message}`);
@@ -22,8 +30,15 @@ module.exports = {
   },
   viewCreate: async (req, res) => {
     try {
+      const originalUrl = req.originalUrl.split("/");
+
       const banks = await Bank.find();
-      res.render("admin/payment/create", { banks });
+      res.render("admin/payment/create", {
+        banks,
+        name: req.session.user.name,
+        title: "Tambah Pembayaran - STORE GG",
+        url: originalUrl[1],
+      });
     } catch (error) {
       req.flash("alertStatus", "danger");
       req.flash("alertMessage", `${error.message}`);
@@ -48,11 +63,19 @@ module.exports = {
   },
   viewEdit: async (req, res) => {
     try {
+      const originalUrl = req.originalUrl.split("/");
+
       const { id } = req.params;
       const banks = await Bank.find();
       const payment = await Payment.findOne({ _id: id });
 
-      res.render("admin/payment/edit", { banks, payment });
+      res.render("admin/payment/edit", {
+        banks,
+        payment,
+        name: req.session.user.name,
+        title: "Ubah Pembayaran - STORE GG",
+        url: originalUrl[1],
+      });
     } catch (error) {
       req.flash("alertStatus", "danger");
       req.flash("alertMessage", `${error.message}`);

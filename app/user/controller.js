@@ -13,7 +13,10 @@ module.exports = {
       };
 
       if (req.session.user === null || req.session.user === undefined) {
-        res.render("admin/user/view_signin", { alert });
+        res.render("admin/user/view_signin", {
+          alert,
+          title: "Sign In - STORE GG",
+        });
       } else {
         res.redirect("/dashboard");
       }
@@ -36,7 +39,7 @@ module.exports = {
               id: check._id,
               email: check.email,
               status: check.status,
-              name: check.status,
+              name: check.name,
             };
             res.redirect("/dashboard");
           } else {
@@ -60,7 +63,7 @@ module.exports = {
       res.redirect("/");
     }
   },
-  actionLogout: (req, res) => {
+  actionLogout: async (req, res) => {
     req.session.destroy();
     res.redirect("/");
   },

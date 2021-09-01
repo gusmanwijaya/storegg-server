@@ -3,6 +3,8 @@ const Category = require("./model");
 module.exports = {
   index: async (req, res) => {
     try {
+      const originalUrl = req.originalUrl.split("/");
+
       const alertMessage = req.flash("alertMessage");
       const alertStatus = req.flash("alertStatus");
 
@@ -15,6 +17,9 @@ module.exports = {
       res.render("admin/category/view_category", {
         category,
         alert,
+        name: req.session.user.name,
+        title: "Kategori - STORE GG",
+        url: originalUrl[1],
       });
     } catch (error) {
       req.flash("alertStatus", "danger");
@@ -25,7 +30,13 @@ module.exports = {
   },
   viewCreate: async (req, res) => {
     try {
-      res.render("admin/category/create");
+      const originalUrl = req.originalUrl.split("/");
+
+      res.render("admin/category/create", {
+        name: req.session.user.name,
+        title: "Tambah Kategori - STORE GG",
+        url: originalUrl[1],
+      });
     } catch (error) {
       req.flash("alertStatus", "danger");
       req.flash("alertMessage", `${error.message}`);
@@ -53,12 +64,19 @@ module.exports = {
   },
   viewEdit: async (req, res) => {
     try {
+      const originalUrl = req.originalUrl.split("/");
+
       const { id } = req.params;
       const category = await Category.findOne({
         _id: id,
       });
 
-      res.render("admin/category/edit", { category });
+      res.render("admin/category/edit", {
+        category,
+        name: req.session.user.name,
+        title: "Ubah Kategori - STORE GG",
+        url: originalUrl[1],
+      });
     } catch (error) {
       req.flash("alertStatus", "danger");
       req.flash("alertMessage", `${error.message}`);

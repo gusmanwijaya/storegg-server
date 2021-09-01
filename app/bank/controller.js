@@ -3,6 +3,8 @@ const Bank = require("./model");
 module.exports = {
   index: async (req, res) => {
     try {
+      const originalUrl = req.originalUrl.split("/");
+
       const alertStatus = req.flash("alertStatus");
       const alertMessage = req.flash("alertMessage");
 
@@ -13,7 +15,13 @@ module.exports = {
 
       const bank = await Bank.find();
 
-      res.render("admin/bank/view_bank", { bank, alert });
+      res.render("admin/bank/view_bank", {
+        bank,
+        alert,
+        name: req.session.user.name,
+        title: "Bank - STORE GG",
+        url: originalUrl[1],
+      });
     } catch (error) {
       req.flash("alertStatus", "danger");
       req.flash("alertMessage", `${error.message}`);
@@ -22,7 +30,13 @@ module.exports = {
   },
   viewCreate: async (req, res) => {
     try {
-      res.render("admin/bank/create");
+      const originalUrl = req.originalUrl.split("/");
+
+      res.render("admin/bank/create", {
+        name: req.session.user.name,
+        title: "Tambah Bank - STORE GG",
+        url: originalUrl[1],
+      });
     } catch (error) {
       req.flash("alertStatus", "danger");
       req.flash("alertMessage", `${error.message}`);
@@ -31,9 +45,9 @@ module.exports = {
   },
   actionCreate: async (req, res) => {
     try {
-      const { name, nameBank, noRekening } = req.body;
+      const { name, bankName, noRekening } = req.body;
 
-      await Bank.create({ name, nameBank, noRekening });
+      await Bank.create({ name, bankName, noRekening });
 
       req.flash("alertStatus", "success");
       req.flash("alertMessage", "Bank berhasil ditambahkan");
@@ -46,10 +60,17 @@ module.exports = {
   },
   viewEdit: async (req, res) => {
     try {
+      const originalUrl = req.originalUrl.split("/");
+
       const { id } = req.params;
       const bank = await Bank.findOne({ _id: id });
 
-      res.render("admin/bank/edit", { bank });
+      res.render("admin/bank/edit", {
+        bank,
+        name: req.session.user.name,
+        title: "Ubah Bank - STORE GG",
+        url: originalUrl[1],
+      });
     } catch (error) {
       req.flash("alertStatus", "danger");
       req.flash("alertMessage", `${error.message}`);
@@ -59,9 +80,9 @@ module.exports = {
   actionEdit: async (req, res) => {
     try {
       const { id } = req.params;
-      const { name, nameBank, noRekening } = req.body;
+      const { name, bankName, noRekening } = req.body;
 
-      await Bank.findOneAndUpdate({ _id: id }, { name, nameBank, noRekening });
+      await Bank.findOneAndUpdate({ _id: id }, { name, bankName, noRekening });
 
       req.flash("alertStatus", "success");
       req.flash("alertMessage", "Bank berhasil diubah");
