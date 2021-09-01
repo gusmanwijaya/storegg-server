@@ -1,0 +1,60 @@
+<table id="example2" class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Tipe Pembayaran</th>
+      <th>Status</th>
+      <th>Bank</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for( let index = 0; index < payment.length; index++ ) { %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= payment[index].type %></td>
+      <td>
+        <% if(payment[index].status === "Y") { %>
+        <span class="badge badge-success"> Aktif </span>
+        <% } else { %>
+        <span class="badge badge-danger"> Tidak Aktif </span>
+        <% } %>
+      </td>
+      <td>
+        <% payment[index].banks.forEach(bank => { %>
+        <span class="badge badge-warning">
+          <%= bank.nameBank %> - <%= bank.noRekening %> - <%= bank.name %>
+        </span>
+        <% }) %>
+      </td>
+      <td>
+        <form
+          action="/payment/status/<%= payment[index]._id %>?_method=PUT"
+          method="POST"
+          style="display: inline-block; margin-bottom: 2px"
+        >
+          <button class="btn btn-primary btn-sm">
+            <i class="fas fa-folder"></i>
+            <% if(payment[index].status === 'Y') { %> Matikan <% } else { %>
+            Hidupkan <% } %>
+          </button>
+        </form>
+        <a
+          href="/payment/edit/<%= payment[index]._id %>"
+          class="btn btn-warning btn-sm"
+          style="margin-bottom: 2px"
+          ><i class="fas fa-pencil-alt"></i> Ubah</a
+        >
+        <form
+          action="/payment/delete/<%= payment[index]._id %>?_method=DELETE"
+          method="POST"
+        >
+          <button class="btn btn-danger btn-sm">
+            <i class="fas fa-trash"></i> Hapus
+          </button>
+        </form>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>

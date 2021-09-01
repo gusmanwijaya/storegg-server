@@ -233,7 +233,7 @@ module.exports = {
       req.flash(
         "alertMessage",
         `Status voucher berhasil ${
-          voucher.status === "Y" ? "dinon-aktifkan" : "diaktifkan"
+          status === "Y" ? "diaktifkan" : "dinon-aktifkan"
         }`
       );
 
