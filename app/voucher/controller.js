@@ -84,6 +84,7 @@ module.exports = {
               category,
               nominals,
               thumbnail: filename,
+              user: req.session.user.id,
             });
 
             req.flash("alertStatus", "success");

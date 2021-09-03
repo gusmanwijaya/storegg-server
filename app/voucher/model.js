@@ -11,6 +11,10 @@ const voucherSchema = mongoose.Schema(
       enum: ["Y", "N"],
       default: "Y",
     },
+    isFeatured: {
+      type: Boolean,
+      default: true,
+    },
     thumbnail: {
       type: String,
     },
