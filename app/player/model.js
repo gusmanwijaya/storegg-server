@@ -16,9 +16,7 @@ let playerSchema = mongoose.Schema(
     },
     username: {
       type: String,
-      require: [true, "Username harus diisi"],
-      maxlength: [225, "Panjang username harus antara 3 - 225 karakter"],
-      minlength: [3, "Panjang username harus antara 3 - 225 karakter"],
+      default: "",
     },
     password: {
       type: String,
