@@ -271,6 +271,7 @@ module.exports = {
   },
   editProfile: async (req, res, next) => {
     try {
+      const { id } = req.params;
       const { name = "", phoneNumber = "" } = req.body;
 
       const payload = {};
@@ -306,7 +307,7 @@ module.exports = {
 
           player = await Player.findOneAndUpdate(
             {
-              _id: req.player._id,
+              _id: id,
             },
             {
               ...payload,
@@ -332,11 +333,10 @@ module.exports = {
           next(error);
         });
       } else {
-        const player = await Player.findOneAndUpdate(
-          { _id: req.player._id },
-          payload,
-          { new: true, runValidators: true }
-        );
+        const player = await Player.findOneAndUpdate({ _id: id }, payload, {
+          new: true,
+          runValidators: true,
+        });
 
         res.status(201).json({
           data: {
