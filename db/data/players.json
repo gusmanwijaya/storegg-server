@@ -1,0 +1,64 @@
+[{
+  "_id": {
+    "$oid": "60bcee695603e6693630c5de"
+  },
+  "role": "user",
+  "status": "Y",
+  "email": "player@gmail.com",
+  "password": "$2a$10$ht3pRXzkRimCf.qTdS6IuON7SE3/M.MAU4rBG1y8Nap3H/UsIUDWq",
+  "phoneNumber": "0987654321",
+  "username": "player",
+  "name": "Player",
+  "avatar": "a1096ed8523e3f6196aa8ea1dda4f932.jpg",
+  "createdAt": {
+    "$date": "2021-06-06T15:48:57.946Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-06T11:57:40.873Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6130ac15998cc269d76bec2c"
+  },
+  "email": "rahasia@gmail.com",
+  "name": "Rahasia Ganteng",
+  "username": "rahasia",
+  "password": "$2a$10$MJqEI.Tpz40eMYQPeIFPdOLUK7nzU5eoUjBEEnuXs1adWLcLgtB8e",
+  "role": "user",
+  "status": "Y",
+  "avatar": "17a1d39ee5ef27874475254e5d7afb7b.jpg",
+  "phoneNumber": "6281234567890",
+  "favorite": {
+    "$oid": "603152e0a4dd027eefacce62"
+  },
+  "createdAt": {
+    "$date": "2021-09-02T10:48:53.028Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-02T10:48:53.028Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6133332b5dac103f9844ab40"
+  },
+  "email": "maheza228@gmail.com",
+  "name": "Maheza Putri Amanda",
+  "username": "",
+  "password": "$2a$10$We8axnhkyOrAxNUdjFEj7.MwvKQpoM1HxrVQCGCRCcnhEUFaYB0vO",
+  "role": "user",
+  "status": "Y",
+  "avatar": "07d910c16ba351eb192c63badb900fac.jpg",
+  "phoneNumber": "",
+  "favorite": {
+    "$oid": "603152e0a4dd027eefacce62"
+  },
+  "createdAt": {
+    "$date": "2021-09-04T08:49:47.532Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-04T08:49:47.532Z"
+  },
+  "__v": 0
+}]
